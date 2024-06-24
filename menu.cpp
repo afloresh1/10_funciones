@@ -14,6 +14,9 @@ int main(){
             cout<<"Saliendo ... "<<endl;
             system("pause");
         break;
+        default:
+            cout<<"No esta determinado";
+        break;
     }
     return 0;
 }
