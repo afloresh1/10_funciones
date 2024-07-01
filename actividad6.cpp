@@ -6,41 +6,71 @@ using namespace std;
 char tueleccion();
 char eleccioncompu();
 void mostrarEleccion(char eleccion);
-
+char compu;
 int main(){
 	char jugador;
 	char compu;
-	int ganar=0;
-
+	int ganar=1;
+	int comp=1;
 	while(ganar<=3){	
 	jugador = tueleccion();
-	
 	cout<<"Jugador: ";
 	mostrarEleccion(jugador);
 	cout<<" "<<endl;
-	cout<<"Computador: ";
+	
 	compu = eleccioncompu();
+	cout<<"Computador: ";
 	mostrarEleccion(compu);
 	cout<<" "<<endl;
-	if (jugador == static_cast<int>(compu))
-        cout << "Resulto en Empate\n";
-        
-    else if
-			((jugador == 1 && compu == 2) ||
-             (jugador == 2 && compu == 3) ||
-             (jugador == 3 && compu == 1)){
-			 
-        cout << "Muy bien!, Ganaste\n";
-        ganar++;
-	
-	} 
-        
-    else{
-	cout << "Que mal, Perdiste\n";			
-	}	
+	switch (jugador){
+		case '1':
+			if (compu == '1'){
+				
+        	cout << "Resulto en Empate\n";
+			} else if(compu == '2'){
+				
+			cout << "Que mal, Perdiste\n";	
+			}
+			else {
+			ganar++;	
+       		cout << "Muy bien!, Ganaste\n";
+			}
+			break;
+		case '2':
+			if (compu == '1'){
+				cout << "Muy bien!, Ganaste\n";
+        	ganar++;
+			} else if(compu == '2'){
+				cout << "Resulto en Empate\n";
+			
+			}
+			else {
+				cout << "Que mal, Perdiste\n";	
+       		
+			}
+			break;
+		case '3':
+			if (compu == '1'){
+				cout << "Que mal, Perdiste\n";
+				
+			} else if(compu == '2'){
+				cout << "Muy bien!, Ganaste\n";
+        	ganar++;
+				
+			
+			}
+			else {
+				cout << "Resulto en Empate\n";
+       		
+			}	
+			break;
+			
+		}
 	}
-	cout<<" "<<endl;
-
+	cout<<"FELICIDADES, GANASTE TRES RONDAS"<<endl;
+	cout<<"El resultado final es: "<<endl;
+	cout<<"Jugador(tu): "<<ganar-1<<endl;
+	cout<<"Computador: "<<comp;
 	return 0;
 	}
 
@@ -60,16 +90,20 @@ char tueleccion(){
 
 
 char eleccioncompu(){
-	int numeroAleatorio=1+rand()%(3+1-1);
+	int numeroAleatorio=rand()%3 + 1;
 	switch (numeroAleatorio){
 		case 1:
+			compu=1;
 			return'1';
 		case 2:
+			compu=2;
 			return'2';
 		case 3:
+			compu=3;
 			return'3';
-			
+	
 	}
+return 0;
 }
 void mostrarEleccion(char eleccion){
 	switch (eleccion){
